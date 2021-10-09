@@ -10,7 +10,7 @@ namespace IC_SpecFlow_Test.Tests
 {
     [TestFixture]
     [Parallelizable]
-    class TM_Tests : CommonDriver
+    public class TM_Tests : CommonDriver
     {
 
         [Test, Order(1), Description("Check if the user is able to create Time record with valid data")]
@@ -26,7 +26,7 @@ namespace IC_SpecFlow_Test.Tests
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Time record with valid data")]
-        public void EditTMTest()
+        public void EditTMTest(string Code, string TypeCode, string Description, decimal Price)
         {
             // Home Page object initialization and definition
             HomePage homePageObj = new HomePage();
@@ -34,7 +34,7 @@ namespace IC_SpecFlow_Test.Tests
 
             // Edit Time
             TMPage tmPageObj = new TMPage();
-            tmPageObj.EditTM(testDriver);
+            tmPageObj.EditTM(testDriver, Code, TypeCode, Description, Price);
         }
 
         [Test, Order(3), Description("Check if the user is able to delete Material record")]

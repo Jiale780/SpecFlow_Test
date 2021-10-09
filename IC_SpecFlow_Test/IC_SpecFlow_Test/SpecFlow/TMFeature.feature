@@ -1,9 +1,30 @@
 ﻿Feature: TMFeature
-	Simple calculator for adding two numbers
+	As a TurnUp Portal admin
+	I would like to create, edit and delete time and material records
+	So that I manage employee time and materials successfully
 
-@mytag
-Scenario: Add two numbers
-	Given the first number is 50
-	And the second number is 70
-	When the two numbers are added
-	Then the result should be 120
+@tmtest @regression
+Scenario: create time and material record with valid details 
+	Given I logged into turn up portal successfully
+	And I navigate to time and material page
+	When I create time and material record
+	Then the record should be created successfully
+
+@tmtest @regression
+Scenario Outline: edit time and material record with valid details 
+	Given I logged into turn up portal successfully
+	And I navigate to time and material page
+	When I update '<Code>', '<TypeCode>', '<Description>', '<Price>' on an time and material record
+	Then the record should have the updated '<Code>', '<TypeCode>', '<Description>', '<Price>'
+
+	Examples: 
+	| Code             | TypeCode | Description                 | Price  |
+	| AutomatedScript  | T        | AutomatedScript             | 37.00  |
+	| Automated Script | M        | Automated Script is changed | 170.00 |
+
+@tmtest @regression
+Scenario: delete time and material record with valid details 
+	Given I logged into turn up portal successfully
+	And I navigate to time and material page
+	When I delete on an time and material record
+	Then the record should have the deleted

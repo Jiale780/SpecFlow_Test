@@ -8,7 +8,7 @@ using System.Text;
 
 namespace IC_SpecFlow_Test.Utilities
 {
-    class CommonDriver
+    public class CommonDriver
     {
         public IWebDriver testDriver;
 

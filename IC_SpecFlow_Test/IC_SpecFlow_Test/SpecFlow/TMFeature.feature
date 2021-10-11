@@ -15,7 +15,7 @@ Scenario Outline: 02 edit time and material record with valid details
 	Given I logged into turn up portal successfully
 	And I navigate to time and material page
 	When I update '<Code>', '<TypeCode>', '<Description>', '<Price>' on an time and material record
-	Then the record should have the updated '<Code>', '<TypeCode>', '<Description>', '<Price>' successfully
+	Then the record should have the updated '<Code>', '<TypeCode>', '<Description>', '<Price>'
 
 	Examples: 
 	| Code             | TypeCode | Description                 | Price  |

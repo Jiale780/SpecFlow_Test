@@ -14,7 +14,7 @@ Scenario: 01 create employee record with valid details
 Scenario Outline: 02 edit employee record with valid details 
 	Given I logged into turn up portal of employee page successfully
 	And I navigate to employee page
-	When I update '<Name>', '<UserName>' on an time and material record
+	When I update '<Name>', '<UserName>' on an employee record
 	Then the record should have the updated '<Name>', '<UserName>' successfully
 
 	Examples: 

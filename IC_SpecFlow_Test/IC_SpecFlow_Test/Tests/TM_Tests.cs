@@ -25,7 +25,7 @@ namespace IC_SpecFlow_Test.Tests
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Time record with valid data")]
-        public void EditTMTest(string Code, string TypeCode, string Description, decimal Price)
+        public void EditTMTest(string Code, string TypeCode, string Description, Decimal Price)
         {
             // Home Page object initialization and definition
             HomePage homePageObj = new HomePage();

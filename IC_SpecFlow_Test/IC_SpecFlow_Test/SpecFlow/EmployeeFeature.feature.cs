@@ -168,7 +168,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I navigate to employee page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 17
- testRunner.When(string.Format("I update \'{0}\', \'{1}\' on an time and material record", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I update \'{0}\', \'{1}\' on an employee record", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
  testRunner.Then(string.Format("the record should have the updated \'{0}\', \'{1}\' successfully", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

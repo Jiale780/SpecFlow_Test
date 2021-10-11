@@ -72,7 +72,7 @@ namespace IC_SpecFlow_Test.Pages
             return newPrice.Text;
         }
 
-        public void EditTM(IWebDriver testDriver, string Code, string TypeCode, string Description, decimal Price)
+        public void EditTM(IWebDriver testDriver, string Code, string TypeCode, string Description, Decimal Price)
         {
             // Click on "Go to the last page" button
             Thread.Sleep(5000);

@@ -54,19 +54,19 @@ namespace IC_SpecFlow_Test.StepDefinitions
         }
 
         [When(@"I update '(.*)', '(.*)', '(.*)', '(.*)' on an time and material record")]
-        public void WhenIUpdateOnAnTimeAndMaterialRecord(string Code, string TypeCode, string Description, decimal Price)
+        public void WhenIUpdateOnAnTimeAndMaterialRecord(string Code, string TypeCode, string Description, Decimal Price)
         {
             tmPageObj.EditTM(testDriver, Code, TypeCode, Description, Price);
         }
 
-        [Then(@"the record should have the updated '(.*)', '(.*)', '(.*)', '(.*)' successfully")]
-        public void ThenTheRecordShouldHaveTheUpdatedSuccessfully(string Code, string TypeCode, string Description, decimal Price)
+        [Then(@"the record should have the updated '(.*)', '(.*)', '(.*)', '(.*)'")]
+        public void ThenTheRecordShouldHaveTheUpdated(string Code, string TypeCode, string Description, Decimal Price)
         {
             // Assertion that Time record has been edited.
             Assert.That(tmPageObj.GetCode(testDriver) == Code, "Actual Code and expected code don't match");
             Assert.That(tmPageObj.GetTypeCode(testDriver) == TypeCode, "Actual TypeCode and expected typeCode don't match");
             Assert.That(tmPageObj.GetDescription(testDriver) == Description, "Actual Description and expected description don't match");
-            Assert.That(tmPageObj.GetPrice(testDriver) != Price.ToString(), "Actual Price and expected price don't match");
+            Assert.That(tmPageObj.GetPrice(testDriver) != Price.ToString("170.00"), "Actual Price and expected price don't match");
         }
 
         [When(@"I delete on an time and material record")]

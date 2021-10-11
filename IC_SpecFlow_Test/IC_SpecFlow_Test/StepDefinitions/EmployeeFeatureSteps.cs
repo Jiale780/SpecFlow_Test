@@ -49,8 +49,8 @@ namespace IC_SpecFlow_Test.StepDefinitions
             Assert.That(newUsername == "Fay", "Actual Username and expected username don't match");
         }
 
-        [When(@"I update '(.*)', '(.*)' on an time and material record")]
-        public void WhenIUpdateOnAnTimeAndMaterialRecord(string Name, string UserName)
+        [When(@"I update '(.*)', '(.*)' on an employee record")]
+        public void WhenIUpdateOnAnEmployeeRecord(string Name, string UserName)
         {
             employeePageObj.EditEmployee(testDriver, Name, UserName);
         }

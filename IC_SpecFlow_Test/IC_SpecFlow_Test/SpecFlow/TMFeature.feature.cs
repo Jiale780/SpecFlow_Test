@@ -173,7 +173,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When(string.Format("I update \'{0}\', \'{1}\', \'{2}\', \'{3}\' on an time and material record", code, typeCode, description, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
- testRunner.Then(string.Format("the record should have the updated \'{0}\', \'{1}\', \'{2}\', \'{3}\' successfully", code, typeCode, description, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the record should have the updated \'{0}\', \'{1}\', \'{2}\', \'{3}\'", code, typeCode, description, price), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

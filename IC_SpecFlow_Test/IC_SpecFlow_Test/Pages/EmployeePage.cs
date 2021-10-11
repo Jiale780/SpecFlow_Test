@@ -66,16 +66,21 @@ namespace IC_SpecFlow_Test.Pages
             Thread.Sleep(5000);
             IWebElement goToLastPageButton = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]/span"));
             goToLastPageButton.Click();
-
-            // Assert that Employee record has been created.
-            IWebElement newEmployeeName = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement newUsername = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-
-            // Assertion
-            Assert.That(newEmployeeName.Text == "Fay Adios", "Actual Employee Name and expected employee name do not match");
-            Assert.That(newUsername.Text == "Fay", "Actual Username and expected username do not match");
         }
-        public void EditEmployee(IWebDriver testDriver)
+
+        public string GetEmployeeName(IWebDriver testDriver)
+        {
+            IWebElement newEmployeeName = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return newEmployeeName.Text;
+        }
+
+        public string GetUsername(IWebDriver testDriver)
+        {
+            IWebElement newUsername = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return newUsername.Text;
+        }
+
+        public void EditEmployee(IWebDriver testDriver, string Name, string UserName)
         {
             // Click on "Go to the last page" button
             Thread.Sleep(5000);
@@ -95,13 +100,13 @@ namespace IC_SpecFlow_Test.Pages
                 Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Name']", 2);
                 IWebElement employeeName = testDriver.FindElement(By.Id("Name"));
                 employeeName.Clear();
-                employeeName.SendKeys("Fin Adios");
+                employeeName.SendKeys(Name);
 
                 // Identify "Username" from Textbox and Input username
                 Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Username']", 2);
                 IWebElement usernameTextBox = testDriver.FindElement(By.Id("Username"));
                 usernameTextBox.Clear();
-                usernameTextBox.SendKeys("Fin");
+                usernameTextBox.SendKeys(UserName);
 
                 // Identify "Password" from Textbox and Input password
                 Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Password']", 2);
@@ -122,19 +127,20 @@ namespace IC_SpecFlow_Test.Pages
                 // Check whether the Check box is toggled on 
                 Assert.That(checkBox.Selected);
 
-                // Identify "GroupsList" textbox and Input Groupslist
-                Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='UserEditForm']/div/div[8]/div/div/div[1]", 2);
-                IWebElement groupsListTextBox = testDriver.FindElement(By.XPath("//*[@id='UserEditForm']/div/div[8]/div/div/div[1]"));
-                groupsListTextBox.Click();
-
-                Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='groupList_listbox']/li[11]", 2);
-                IWebElement groupsListIDTextBox = testDriver.FindElement(By.XPath("//*[@id='groupList_listbox']/li[11]"));
-                groupsListIDTextBox.Click();
+                //// Identify "GroupsList" textbox and Input Groupslist
+                //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='UserEditForm']/div/div[8]/div/div/div[1]", 3);
+                //IWebElement groupsListTextBox = testDriver.FindElement(By.XPath("//*[@id='UserEditForm']/div/div[8]/div/div/div[1]"));
+                //groupsListTextBox.Click();
+                //
+                //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='groupList_listbox']/li[11]", 2);
+                //IWebElement groupsListIDTextBox = testDriver.FindElement(By.XPath("//*[@id='groupList_listbox']/li[11]"));
+                //groupsListIDTextBox.Click();
 
                 // Click on "Save" button
+                //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='SaveButton']", 4);
                 IWebElement saveButton1 = testDriver.FindElement(By.Id("SaveButton"));
                 saveButton1.Click();
-                Thread.Sleep(4000);
+                //Thread.Sleep(4000);
 
                 // Click on "Back To List" url link
                 Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='container']/div/a", 2);
@@ -145,14 +151,6 @@ namespace IC_SpecFlow_Test.Pages
                 Thread.Sleep(5000);
                 IWebElement goToLastPageButton1 = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[4]/a[4]/span"));
                 goToLastPageButton1.Click();
-
-                // Assert that Employee record has been created.
-                IWebElement editedEmployeeName = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-                IWebElement editedUsername = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-
-                // Assertion
-                Assert.That(editedEmployeeName.Text == "Fin Adios", "Actual Employee Name and expected employee name do not match");
-                Assert.That(editedUsername.Text == "Fin", "Actual Username and expected username do not match");
             }
             else
             {
@@ -176,20 +174,11 @@ namespace IC_SpecFlow_Test.Pages
 
                 // Alert of the display prompt message for the delete button
                 testDriver.SwitchTo().Alert().Accept();
-
-                // Assert that Employee record has been created.
-                IWebElement editedEmployeeName = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-                IWebElement editedUsername = testDriver.FindElement(By.XPath("//*[@id='usersGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-
-                // Assertion
-                Assert.That(editedEmployeeName.Text == "Fin Adios", "Actual Employee Name and expected employee name do not match");
-                Assert.That(editedUsername.Text == "Fin", "Actual Username and expected username do not match");
             }
             else
             {
                 Assert.Fail("Record to be deleted hasn't been found. Record is not deleted.");
             }
-
         }
     }
 }

@@ -12,7 +12,6 @@ namespace IC_SpecFlow_Test.Tests
     [Parallelizable]
     public class TM_Tests : CommonDriver
     {
-
         [Test, Order(1), Description("Check if the user is able to create Time record with valid data")]
         public void CreateTMTest()
         {

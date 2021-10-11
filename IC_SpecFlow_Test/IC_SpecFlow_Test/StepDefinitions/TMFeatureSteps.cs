@@ -59,8 +59,8 @@ namespace IC_SpecFlow_Test.StepDefinitions
             tmPageObj.EditTM(testDriver, Code, TypeCode, Description, Price);
         }
 
-        [Then(@"the record should have the updated '(.*)', '(.*)', '(.*)', '(.*)'")]
-        public void ThenTheRecordShouldHaveTheUpdated(string Code, string TypeCode, string Description, decimal Price)
+        [Then(@"the record should have the updated '(.*)', '(.*)', '(.*)', '(.*)' successfully")]
+        public void ThenTheRecordShouldHaveTheUpdatedSuccessfully(string Code, string TypeCode, string Description, decimal Price)
         {
             // Assertion that Time record has been edited.
             Assert.That(tmPageObj.GetCode(testDriver) == Code, "Actual Code and expected code don't match");
@@ -75,8 +75,8 @@ namespace IC_SpecFlow_Test.StepDefinitions
             tmPageObj.DeleteTM(testDriver);
         }
 
-        [Then(@"the record should have the deleted")]
-        public void ThenTheRecordShouldHaveTheDeleted()
+        [Then(@"the record should have the deleted successfully")]
+        public void ThenTheRecordShouldHaveTheDeletedSuccessfully()
         {
             string editedCode = tmPageObj.GetCode(testDriver);
             string editedTypeCode = tmPageObj.GetTypeCode(testDriver);

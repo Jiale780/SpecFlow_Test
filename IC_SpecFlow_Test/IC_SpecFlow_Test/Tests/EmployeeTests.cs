@@ -10,9 +10,8 @@ namespace IC_SpecFlow_Test.Tests
 {
     [TestFixture]
     [Parallelizable]
-    class EmployeeTests : CommonDriver
+    public class EmployeeTests : CommonDriver
     {
-
         [Test, Order(1), Description("Check if the user is able to create Employee record with valid data")]
         public void CreateEmployeeTest()
         {
@@ -26,7 +25,7 @@ namespace IC_SpecFlow_Test.Tests
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Employee record with valid data")]
-        public void EditEmployeeTest()
+        public void EditEmployeeTest(string Name, string UserName)
         {
             // Home Page object initialization and definition
             HomePage homePageObj = new HomePage();
@@ -34,7 +33,7 @@ namespace IC_SpecFlow_Test.Tests
 
             // Edit Time
             EmployeePage employeePageObj = new EmployeePage();
-            employeePageObj.EditEmployee(testDriver);
+            employeePageObj.EditEmployee(testDriver, Name, UserName);
         }
 
         [Test, Order(3), Description("Check if the user is able to delete Employee record with valid data")]

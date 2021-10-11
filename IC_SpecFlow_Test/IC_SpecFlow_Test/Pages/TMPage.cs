@@ -20,7 +20,7 @@ namespace IC_SpecFlow_Test.Pages
             IWebElement typeCodeDropdown = testDriver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]/span"));
             typeCodeDropdown.Click();
 
-            Thread.Sleep(2000);
+            Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='TypeCode_listbox']/li[2]", 2);
             IWebElement selectTime = testDriver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
             selectTime.Click();
 
@@ -134,12 +134,6 @@ namespace IC_SpecFlow_Test.Pages
                 Thread.Sleep(5000);
                 IWebElement goToLastPageButton1 = testDriver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
                 goToLastPageButton1.Click();
-
-                // Assert that Time record has been edited.
-                //IWebElement editedCode = testDriver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-                //IWebElement editedTypeCode = testDriver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-                //IWebElement editedDescription = testDriver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
-                //IWebElement editedPrice = testDriver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
             }
             else
             {
@@ -169,7 +163,6 @@ namespace IC_SpecFlow_Test.Pages
             {
                 Assert.Fail("Record to be deleted hasn't been found. Record is not deleted.");
             }
-            
         }
     }
 }

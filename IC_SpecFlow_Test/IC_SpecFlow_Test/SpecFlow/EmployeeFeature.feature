@@ -23,7 +23,7 @@ Scenario Outline: 02 edit employee record with valid details
 	| Fin Adios | Fin      |
 
 @tmtest @regression
-Scenario Outline: 03 delete employee record with valid details 
+Scenario: 03 delete employee record with valid details 
 	Given I logged into turn up portal of employee page successfully
 	And I navigate to employee page
 	When I delete on an employee record

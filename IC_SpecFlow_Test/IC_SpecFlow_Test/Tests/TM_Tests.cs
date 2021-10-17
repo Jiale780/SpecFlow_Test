@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace IC_SpecFlow_Test.Tests
 {
-    [TestFixture]
+    [TestFixture, Description("Navigate to the Time & Material Page")]
     [Parallelizable]
     public class TM_Tests : CommonDriver
     {
@@ -18,10 +18,10 @@ namespace IC_SpecFlow_Test.Tests
         TMPage tmPageObj = new TMPage();
 
         [Test, Order(1), Description("Check if the user is able to create Time record with valid data")]
-        public void CreateTMTest()
+        public void CreateTMTest(string Code, string Description, Decimal Price)
         {
             homePageObj.GoToTMPage(testDriver);
-            tmPageObj.CreateTM(testDriver);
+            tmPageObj.CreateTM(testDriver, Code, Description, Price);
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Time record with valid data")]

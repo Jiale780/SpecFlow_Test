@@ -10,7 +10,7 @@ namespace IC_SpecFlow_Test.Pages
 {
     class TMPage
     {
-        public void CreateTM(IWebDriver testDriver)
+        public void CreateTM(IWebDriver testDriver, string Code, string Description, Decimal Price)
         {
             // Click on "Create New" button
             IWebElement CreateNewButton = testDriver.FindElement(By.XPath("//*[@id='container']/p/a"));
@@ -26,17 +26,17 @@ namespace IC_SpecFlow_Test.Pages
 
             // Identify "Code" from Textbox and Input code
             IWebElement codeTextBox = testDriver.FindElement(By.Id("Code"));
-            codeTextBox.SendKeys("AutomatedScript");
+            codeTextBox.SendKeys(Code);
 
             // Identify "Description" from Textbox and Input description
             IWebElement descriptionTextBox = testDriver.FindElement(By.Id("Description"));
-            descriptionTextBox.SendKeys("AutomatedScript");
+            descriptionTextBox.SendKeys(Description);
 
             // Identify "Price per unit" textbox and input price
             testDriver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]")).Click();
 
             IWebElement pricePerUnit = testDriver.FindElement(By.Id("Price"));
-            pricePerUnit.SendKeys("37.00");
+            pricePerUnit.SendKeys(Price.ToString());
 
             // Click on "Save" button
             IWebElement saveButton = testDriver.FindElement(By.Id("SaveButton"));

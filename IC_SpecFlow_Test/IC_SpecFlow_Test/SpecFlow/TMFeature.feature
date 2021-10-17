@@ -7,8 +7,12 @@
 Scenario: 01 create time and material record with valid details 
 	Given I logged into turn up portal successfully
 	And I navigate to time and material page
-	When I create time and material record
-	Then the record should be created successfully
+	When I create '<Code>', '<Description>', '<Price>' on time and material record
+	Then the record should be created '<Code>', '<Description>', '<Price>'
+
+	Examples: 
+	| Code            | Description     | Price |
+	| AutomatedScript | AutomatedScript | 37.00 |
 
 @tmtest @regression
 Scenario Outline: 02 edit time and material record with valid details 

@@ -1,5 +1,6 @@
 ﻿using IC_SpecFlow_Test.Utilities;
 using NUnit.Framework;
+using NUnit_Test_Script.TestDatabase;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -19,28 +20,34 @@ namespace IC_SpecFlow_Test.Pages
             testDriver.Manage().Window.Maximize();
             testDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             testDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
+        }
 
-            try
-            {
-                // Identify the username textbox enter valid username
-                IWebElement usernameTextBox = testDriver.FindElement(By.Id("UserName"));
-                usernameTextBox.SendKeys("hari");
+        public void KeyInCredentials(IWebDriver testDriver)
+        {
+            // Identify the username textbox enter valid username
+            IWebElement usernameTextBox = testDriver.FindElement(By.Id("UserName"));
+            string username = "hari";
+            usernameTextBox.SendKeys(username);
 
-                // Identify password textbox enter valid password
-                IWebElement passwordTextBox = testDriver.FindElement(By.Id("Password"));
-                passwordTextBox.SendKeys("123123");
+            // Identify password textbox enter valid password
+            IWebElement passwordTextBox = testDriver.FindElement(By.Id("Password"));
+            string password = "123123";
+            passwordTextBox.SendKeys(password);
+        }
 
-                // Identify login button and click
-                Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='loginForm']/form/div[3]/input[1]", 2);
-                IWebElement loginButton = testDriver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
-                loginButton.Click();
-                
-                //Thread.Sleep(1500);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("TurnUp Portal home page did not launch", ex.Message);
-            }
+        public void ClickLoginBtn(IWebDriver testDriver)
+        {
+            // Identify login button and click
+            Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='loginForm']/form/div[3]/input[1]", 2);
+            IWebElement loginButton = testDriver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
+            loginButton.Click();
+        }
+
+        public string ValidateUser(IWebDriver testDriver)
+        {
+            Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='logoutForm']/ul/li/a", 2);
+            IWebElement actualUser = testDriver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
+            return actualUser.Text;
         }
     }
 }

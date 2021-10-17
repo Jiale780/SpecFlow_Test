@@ -24,6 +24,9 @@ namespace IC_SpecFlow_Test.StepDefinitions
             testDriver = new ChromeDriver();
 
             loginPageObj.GoToLoginPage(testDriver);
+            loginPageObj.KeyInCredentials(testDriver);
+            loginPageObj.ClickLoginBtn(testDriver);
+            loginPageObj.ValidateUser(testDriver);
         }
         
         [Given(@"I navigate to employee page")]

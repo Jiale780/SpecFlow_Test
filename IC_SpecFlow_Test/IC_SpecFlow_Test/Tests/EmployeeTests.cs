@@ -8,7 +8,7 @@ using System.Text;
 
 namespace IC_SpecFlow_Test.Tests
 {
-    [TestFixture]
+    [TestFixture, Description("Navigate to the Employee Page")]
     [Parallelizable]
     public class EmployeeTests : CommonDriver
     {

@@ -75,16 +75,24 @@ namespace IC_SpecFlow_Test.SpecFlow
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01 create employee record with valid details")]
+        [NUnit.Framework.DescriptionAttribute("1. create employee record with valid details")]
         [NUnit.Framework.CategoryAttribute("tmtest")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void _01CreateEmployeeRecordWithValidDetails()
+        [NUnit.Framework.TestCaseAttribute("Fay Adios", "Fay", null)]
+        public virtual void _1_CreateEmployeeRecordWithValidDetails(string name, string userName, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "tmtest",
                     "regression"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 create employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("Name", name);
+            argumentsOfScenario.Add("UserName", userName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. create employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -112,22 +120,21 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I navigate to employee page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.When("I create employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I create \'{0}\', \'{1}\' on an employee record", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("the employee record should be created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the employee record should be created \'{0}\', \'{1}\'", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("02 edit employee record with valid details")]
+        [NUnit.Framework.DescriptionAttribute("2. edit employee record with valid details")]
         [NUnit.Framework.CategoryAttribute("tmtest")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        [NUnit.Framework.TestCaseAttribute("Fay Adios", "Fay", null)]
         [NUnit.Framework.TestCaseAttribute("Fin Adios", "Fin", null)]
-        public virtual void _02EditEmployeeRecordWithValidDetails(string name, string userName, string[] exampleTags)
+        public virtual void _2_EditEmployeeRecordWithValidDetails(string name, string userName, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "tmtest",
@@ -140,8 +147,8 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Name", name);
             argumentsOfScenario.Add("UserName", userName);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02 edit employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 14
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2. edit employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -161,34 +168,34 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 15
+#line 19
  testRunner.Given("I logged into turn up portal of employee page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 20
  testRunner.And("I navigate to employee page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 21
  testRunner.When(string.Format("I update \'{0}\', \'{1}\' on an employee record", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 18
- testRunner.Then(string.Format("the record should have the updated \'{0}\', \'{1}\' successfully", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
+ testRunner.Then(string.Format("the employee record should have the updated \'{0}\', \'{1}\'", name, userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("03 delete employee record with valid details")]
+        [NUnit.Framework.DescriptionAttribute("3. delete employee record with valid details")]
         [NUnit.Framework.CategoryAttribute("tmtest")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void _03DeleteEmployeeRecordWithValidDetails()
+        public virtual void _3_DeleteEmployeeRecordWithValidDetails()
         {
             string[] tagsOfScenario = new string[] {
                     "tmtest",
                     "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03 delete employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 26
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3. delete employee record with valid details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -208,16 +215,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 27
+#line 30
  testRunner.Given("I logged into turn up portal of employee page successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 28
+#line 31
  testRunner.And("I navigate to employee page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 32
  testRunner.When("I delete on an employee record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 33
  testRunner.Then("the employee record should be deleted successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

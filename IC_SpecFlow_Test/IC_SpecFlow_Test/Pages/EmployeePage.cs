@@ -10,7 +10,7 @@ namespace IC_SpecFlow_Test.Pages
 {
     class EmployeePage
     {
-        public void CreateEmployee(IWebDriver testDriver)
+        public void CreateEmployee(IWebDriver testDriver, string Name, string UserName)
         {
             // Click on "Create New" button
             //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='container']/p/a", 2);
@@ -20,12 +20,12 @@ namespace IC_SpecFlow_Test.Pages
             // Identify "Name" from Textbox and Input name
             //Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Name']", 2);
             IWebElement employeeName = testDriver.FindElement(By.Id("Name"));
-            employeeName.SendKeys("Fay Adios");
+            employeeName.SendKeys(Name);
 
             // Identify "Username" from Textbox and Input username
             //Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Username']", 2);
             IWebElement usernameTextBox = testDriver.FindElement(By.Id("Username"));
-            usernameTextBox.SendKeys("Fay");
+            usernameTextBox.SendKeys(UserName);
 
             // Identify "Password" from Textbox and Input password
             //Wait.WaitForElementToExist(testDriver, "XPath", "//*[@id='Password']", 2);
@@ -53,6 +53,7 @@ namespace IC_SpecFlow_Test.Pages
             groupsListIDTextBox.Click();
 
             // Click on "Save" button
+            Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='SaveButton']", 4);
             IWebElement saveButton = testDriver.FindElement(By.Id("SaveButton"));
             saveButton.Click();
             //Thread.Sleep(4000);
@@ -126,15 +127,6 @@ namespace IC_SpecFlow_Test.Pages
 
                 // Check whether the Check box is toggled on 
                 Assert.That(checkBox.Selected);
-
-                //// Identify "GroupsList" textbox and Input Groupslist
-                //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='UserEditForm']/div/div[8]/div/div/div[1]", 3);
-                //IWebElement groupsListTextBox = testDriver.FindElement(By.XPath("//*[@id='UserEditForm']/div/div[8]/div/div/div[1]"));
-                //groupsListTextBox.Click();
-                //
-                //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='groupList_listbox']/li[11]", 2);
-                //IWebElement groupsListIDTextBox = testDriver.FindElement(By.XPath("//*[@id='groupList_listbox']/li[11]"));
-                //groupsListIDTextBox.Click();
 
                 // Click on "Save" button
                 //Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='SaveButton']", 4);

@@ -18,10 +18,10 @@ namespace IC_SpecFlow_Test.Tests
         EmployeePage employeePageObj = new EmployeePage();
 
         [Test, Order(1), Description("Check if the user is able to create Employee record with valid data")]
-        public void CreateEmployeeTest()
+        public void CreateEmployeeTest(string Name, string UserName)
         {
             homePageObj.GoToEmployeePage(testDriver);
-            employeePageObj.CreateEmployee(testDriver);
+            employeePageObj.CreateEmployee(testDriver, Name, UserName);
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Employee record with valid data")]

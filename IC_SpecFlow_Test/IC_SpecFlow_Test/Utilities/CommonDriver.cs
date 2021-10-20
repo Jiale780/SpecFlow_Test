@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace IC_SpecFlow_Test.Utilities
 {
@@ -12,7 +13,7 @@ namespace IC_SpecFlow_Test.Utilities
     {
         public IWebDriver testDriver;
 
-        [OneTimeSetUp]
+        [BeforeScenario]
         public void GoToLoginPage()
         {
             // Open chrome browser
@@ -23,10 +24,7 @@ namespace IC_SpecFlow_Test.Utilities
             loginPageObj.GoToLoginPage(testDriver);
         }
    
-        [OneTimeTearDown]
-        public void CloseTestRun()
-        {
-            testDriver.Quit();
-        }
+        [AfterScenario]
+        public void CloseTestRun() => testDriver.Quit();
     }
 }

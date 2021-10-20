@@ -35,32 +35,18 @@ namespace IC_SpecFlow_Test.StepDefinitions
             homePageObj.GoToTMPage(testDriver);
         }
 
-        [When(@"I create '(.*)', '(.*)', '(.*)' on time and material record")]
-        public void WhenICreateOnTimeAndMaterialRecord(string Code, string Description, Decimal Price)
+        [When(@"I create '(.*)', '(.*)', '(.*)', '(.*)' on time and material record")]
+        public void WhenICreateOnTimeAndMaterialRecord(string Code, string TypeCode, string Description, Decimal Price)
         {
-            tmPageObj.CreateTM(testDriver, Code, Description, Price);
+            tmPageObj.CreateTM(testDriver, Code, TypeCode, Description, Price);
         }
 
-        [Then(@"the record should be created successfully")]
-        public void ThenTheRecordShouldBeCreatedSuccessfully()
+        [Then(@"the record should be created '(.*)', '(.*)', '(.*)', '(.*)'")]
+        public void ThenTheRecordShouldBeCreated(string Code, string TypeCode, string Description, Decimal Price)
         {
-            string newCode = tmPageObj.GetCode(testDriver);
-            string newTypeCode = tmPageObj.GetTypeCode(testDriver);
-            string newDescription = tmPageObj.GetDescription(testDriver);
-            string newPrice = tmPageObj.GetPrice(testDriver);
-
             // Assertion that Time record has been created.
-            Assert.That(newCode == "AutomatedScript", "Actual Code and expected code don't match");
-            Assert.That(newTypeCode == "T", "Actual TypeCode and expected typecode don't match");
-            Assert.That(newDescription == "AutomatedScript", "Actual Description and expected description don't match");
-            Assert.That(newPrice == "$37.00", "Actual Price and expected price don't match");
-        }
-
-        [Then(@"the record should be created '(.*)', '(.*)', '(.*)'")]
-        public void ThenTheRecordShouldBeCreated(string Code, string Description, Decimal Price)
-        {
-            // Assertion that Time record has been edited.
             Assert.That(tmPageObj.GetCode(testDriver) == Code, "Actual Code and expected code don't match");
+            Assert.That(tmPageObj.GetTypeCode(testDriver) == TypeCode, "Actual TypeCode and expected typeCode don't match");
             Assert.That(tmPageObj.GetDescription(testDriver) == Description, "Actual Description and expected description don't match");
             Assert.That(tmPageObj.GetPrice(testDriver) != Price.ToString("37.00"), "Actual Price and expected price don't match");
         }
@@ -71,8 +57,8 @@ namespace IC_SpecFlow_Test.StepDefinitions
             tmPageObj.EditTM(testDriver, Code, TypeCode, Description, Price);
         }
 
-        [Then(@"the record should have the updated '(.*)', '(.*)', '(.*)', '(.*)'")]
-        public void ThenTheRecordShouldHaveTheUpdated(string Code, string TypeCode, string Description, Decimal Price)
+        [Then(@"the tm record should have the updated '(.*)', '(.*)', '(.*)', '(.*)'")]
+        public void ThenTheTmRecordShouldHaveTheUpdated(string Code, string TypeCode, string Description, Decimal Price)
         {
             // Assertion that Time record has been edited.
             Assert.That(tmPageObj.GetCode(testDriver) == Code, "Actual Code and expected code don't match");
@@ -99,7 +85,7 @@ namespace IC_SpecFlow_Test.StepDefinitions
             Assert.That(editedCode == "Automated Script", "Actual Code and expected code don't match");
             Assert.That(editedTypeCode == "M", "Actual TypeCode and expected typecode don't match");
             Assert.That(editedDescription == "Automated Script is changed", "Actual Description and expected description don't match");
-            Assert.That(editedPrice == "$170.00", "Actual Price and expected price don't match");
+            Assert.That(editedPrice != "170.00", "Actual Price and expected price don't match");
         }
     }
 }

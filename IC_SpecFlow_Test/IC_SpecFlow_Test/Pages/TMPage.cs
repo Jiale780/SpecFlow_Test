@@ -10,7 +10,7 @@ namespace IC_SpecFlow_Test.Pages
 {
     class TMPage
     {
-        public void CreateTM(IWebDriver testDriver, string Code, string Description, Decimal Price)
+        public void CreateTM(IWebDriver testDriver, string Code, string TypeCode, string Description, Decimal Price)
         {
             // Click on "Create New" button
             IWebElement CreateNewButton = testDriver.FindElement(By.XPath("//*[@id='container']/p/a"));
@@ -20,9 +20,18 @@ namespace IC_SpecFlow_Test.Pages
             IWebElement typeCodeDropdown = testDriver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]/span"));
             typeCodeDropdown.Click();
 
-            Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='TypeCode_listbox']/li[2]", 2);
-            IWebElement selectTime = testDriver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
-            selectTime.Click();
+            if (TypeCode == "T")
+            {
+                Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='TypeCode_listbox']/li[2]", 2);
+                IWebElement selectTime = testDriver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
+                selectTime.Click();
+            }
+            else
+            {
+                Wait.WaitForElementToBeClickable(testDriver, "XPath", "//*[@id='TypeCode_listbox']/li[1]", 2);
+                IWebElement selectMaterial = testDriver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[1]"));
+                selectMaterial.Click();
+            }
 
             // Identify "Code" from Textbox and Input code
             IWebElement codeTextBox = testDriver.FindElement(By.Id("Code"));

@@ -75,16 +75,16 @@ namespace IC_SpecFlow_Test.SpecFlow
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01 Navigate to the Login page with valid records")]
+        [NUnit.Framework.DescriptionAttribute("1. Navigate to the Login page with valid records")]
         [NUnit.Framework.CategoryAttribute("tmtest")]
         [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void _01NavigateToTheLoginPageWithValidRecords()
+        public virtual void _1_NavigateToTheLoginPageWithValidRecords()
         {
             string[] tagsOfScenario = new string[] {
                     "tmtest",
                     "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01 Navigate to the Login page with valid records", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1. Navigate to the Login page with valid records", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

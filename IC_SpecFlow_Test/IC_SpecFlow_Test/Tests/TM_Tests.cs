@@ -18,10 +18,10 @@ namespace IC_SpecFlow_Test.Tests
         TMPage tmPageObj = new TMPage();
 
         [Test, Order(1), Description("Check if the user is able to create Time record with valid data")]
-        public void CreateTMTest(string Code, string Description, Decimal Price)
+        public void CreateTMTest(string Code, string TypeCode, string Description, Decimal Price)
         {
             homePageObj.GoToTMPage(testDriver);
-            tmPageObj.CreateTM(testDriver, Code, Description, Price);
+            tmPageObj.CreateTM(testDriver, Code, TypeCode, Description, Price);
         }
 
         [Test, Order(2), Description("Check if the user is able to edit Time record with valid data")]

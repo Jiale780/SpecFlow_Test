@@ -34,22 +34,19 @@ namespace IC_SpecFlow_Test.StepDefinitions
         {
             homePageObj.GoToEmployeePage(testDriver);
         }
-        
-        [When(@"I create employee record")]
-        public void WhenICreateEmployeeRecord()
-        {
-            employeePageObj.CreateEmployee(testDriver);
-        }
-        
-        [Then(@"the employee record should be created successfully")]
-        public void ThenTheEmployeeRecordShouldBeCreatedSuccessfully()
-        {
-            string newEmployeeName = employeePageObj.GetEmployeeName(testDriver);
-            string newUsername = employeePageObj.GetUsername(testDriver);
 
+        [When(@"I create '(.*)', '(.*)' on an employee record")]
+        public void WhenICreateOnAnEmployeeRecord(string Name, string UserName)
+        {
+            employeePageObj.CreateEmployee(testDriver, Name, UserName);
+        }
+
+        [Then(@"the employee record should be created '(.*)', '(.*)'")]
+        public void ThenTheEmployeeRecordShouldBeCreated(string Name, string UserName)
+        {
             // Assertion that Time record has been created.
-            Assert.That(newEmployeeName == "Fay Adios", "Actual Employee Name and expected employee name don't match");
-            Assert.That(newUsername == "Fay", "Actual Username and expected username don't match");
+            Assert.That(employeePageObj.GetEmployeeName(testDriver) == Name, "Actual Name and expected name don't match");
+            Assert.That(employeePageObj.GetUsername(testDriver) == UserName, "Actual UserName and expected username don't match");
         }
 
         [When(@"I update '(.*)', '(.*)' on an employee record")]
@@ -58,8 +55,8 @@ namespace IC_SpecFlow_Test.StepDefinitions
             employeePageObj.EditEmployee(testDriver, Name, UserName);
         }
 
-        [Then(@"the record should have the updated '(.*)', '(.*)' successfully")]
-        public void ThenTheRecordShouldHaveTheUpdatedSuccessfully(string Name, string UserName)
+        [Then(@"the employee record should have the updated '(.*)', '(.*)'")]
+        public void ThenTheEmployeeRecordShouldHaveTheUpdated(string Name, string UserName)
         {
             // Assertion that Time record has been edited.
             Assert.That(employeePageObj.GetEmployeeName(testDriver) == Name, "Actual Name and expected name don't match");
